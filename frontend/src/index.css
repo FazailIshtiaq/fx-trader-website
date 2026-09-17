@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #0a0a0a;
+  color: white;
+  /* faint warm glow fading down from the hero, instead of a hard cut to flat black */
+  background-image: radial-gradient(
+    ellipse 1200px 600px at 50% 0%,
+    rgba(245, 166, 35, 0.08),
+    transparent 70%
+  );
+  background-repeat: no-repeat;
+}
