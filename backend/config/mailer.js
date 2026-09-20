@@ -4,12 +4,12 @@ import nodemailer from "nodemailer";
 dotenv.config();
 
 const transporter = nodemailer.createTransport({
-  host: process.env.HOST,
-  port: Number(process.env.PORT || 587),
-  secure: Number(process.env.PORT) === 465,
+  host: process.env.SMTP_HOST,
+  port: Number(process.env.SMTP_PORT || 587),
+  secure: Number(process.env.SMTP_PORT) === 465,
   auth: {
-    user: process.env.USER,
-    pass: process.env.PASS,
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS,
   },
 });
 

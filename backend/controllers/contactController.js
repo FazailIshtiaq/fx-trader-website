@@ -12,22 +12,26 @@ export const submitContactForm = async (req, res) => {
     // 1. Save it in the database so it also shows up in the admin panel
     await Message.create({ name, email, message });
 
-    // 2. Email a notification to the admin's inbox
-    await transporter.sendMail({
-      from: `"FX Trader Website" <${process.env.USER}>`,
-      to: process.env.CONTACT_RECEIVER_EMAIL,
-      replyTo: email,
-      subject: `New contact form message from ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
-      html: `
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
-      `,
-    });
+    // 2. Email a notification to the admin's inbox.
+    try {
+      await transporter.sendMail({
+        from: `"FX Trader Website" <${process.env.SMTP_USER}>`,
+        to: process.env.CONTACT_RECEIVER_EMAIL || process.env.SMTP_USER,
+        replyTo: email,
+        subject: `New contact form message from ${name}`,
+        text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+        html: `
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Message:</strong></p>
+          <p>${message}</p>
+        `,
+      });
+    } catch (emailError) {
+      console.error("Contact email notification failed:", emailError.message);
+    }
 
-    res.status(201).json({ message: "Message sent successfully" });
+    res.status(201).json({ message: "Message received successfully" });
   } catch (error) {
     console.error("Contact form error:", {
       message: error.message,
