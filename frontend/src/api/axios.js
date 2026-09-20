@@ -1,6 +1,21 @@
 import axios from "axios";
 
-const BASE_URL = import.meta.env.VITE_API_URL || "https://fx-trader-website-production.up.railway.app";
+const configuredBaseUrl = import.meta.env.VITE_API_URL?.trim();
+
+if (!configuredBaseUrl && !import.meta.env.DEV) {
+  // Fails loudly in production instead of silently pointing at the wrong place.
+  console.error(
+    "VITE_API_URL is not set! The site cannot reach the backend. " +
+    "Set it in Vercel → Project → Settings → Environment Variables, then redeploy."
+  );
+}
+
+const apiHost = configuredBaseUrl || (import.meta.env.DEV ? "/api" : "");
+const BASE_URL = apiHost.replace(/\/+$/, "").replace(/\/api$/, "") + "/api";
+
+// The backend's root URL with no /api suffix — used to build links to static
+// files it serves directly, like /uploads/... (payment screenshots).
+export const BACKEND_ORIGIN = BASE_URL.replace(/\/api$/, "");
 
 // Used by the admin panel
 const api = axios.create({ baseURL: BASE_URL });
