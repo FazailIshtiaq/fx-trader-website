@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import api from "../api/axios.js";
+import api, { BACKEND_ORIGIN } from "../api/axios.js";
 
-// The backend serves uploaded screenshots at /uploads/... on port 5000.
-// In dev, the Vite proxy only covers /api, so build the full URL here.
-const BACKEND_ORIGIN = "http://localhost:5000";
+// BACKEND_ORIGIN (from api/axios.js) is your backend's real URL (Railway in prod, localhost:5000 in dev).
+// Uploaded screenshots are served from there at /uploads/...
 
 export default function ManageSubscriptions() {
   const [subs, setSubs] = useState([]);
