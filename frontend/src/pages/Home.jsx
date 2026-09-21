@@ -4,6 +4,7 @@ import SocialLinks from "../components/SocialLinks.jsx";
 import Courses from "../components/Courses.jsx";
 import Videos from "../components/Videos.jsx";
 import Contact from "../components/Contact.jsx";
+import Footer from "../components/Footer.jsx";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Courses />
       <Videos />
       <Contact />
+      <Footer />
     </div>
   );
 }
