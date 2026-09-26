@@ -4,7 +4,7 @@ import { publicApi } from "../api/axios.js";
 import { useUserAuth } from "../context/UserAuthContext.jsx";
 import SubscribeModal from "./SubscribeModal.jsx";
 
-const planNames = ["Free", "Pro", "Advance"];
+const planNames = ["Free", "Pro", "Advance", "Become Legendary Trader"];
 
 function getYouTubeEmbedUrl(url) {
   try {

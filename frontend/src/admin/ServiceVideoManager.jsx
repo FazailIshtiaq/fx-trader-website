@@ -1,7 +1,7 @@
 import { useState } from "react";
 import api from "../api/axios.js";
 
-const plans = ["Free", "Pro", "Advance"];
+const plans = ["Free", "Pro", "Advance", "Become Legendary Trader"];
 const emptyVideo = { title: "", category: "", thumbnailUrl: "", videoUrl: "", duration: "", requiredPlan: "Free" };
 
 export default function ServiceVideoManager({ videos, onChanged }) {
