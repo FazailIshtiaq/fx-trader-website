@@ -4,43 +4,46 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative left-1/2 -translate-x-1/2 w-screen px-8 pt-16 pb-10 aspect-[16/9] min-h-[420px] max-h-[750px] flex items-start overflow-hidden"
+      className="relative w-full overflow-hidden px-4 pb-10 pt-16 sm:px-8 lg:px-10 min-h-[480px] sm:min-h-[560px] lg:min-h-[700px]"
     >
-      {/* Full-bleed background image */}
       <img
         src={heroImage}
         alt="Trader background"
-        className="absolute inset-0 w-full h-full object-cover object-top"
+        className="absolute inset-0 h-full w-full scale-105 object-cover object-center sm:scale-100 sm:object-[center_15%] md:object-[center_20%] lg:object-center"
       />
 
-      {/* Dark gradient so the left-side text stays readable over the photo */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/80 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/75 to-black/35" />
 
-      {/* Text content sits above the image/gradient */}
-      <div className="relative z-10 max-w-xl">
-        <p className="text-accent uppercase tracking-wide text-sm mb-3 flex items-center gap-2">
-          <span className="w-2 h-2 bg-accent rounded-full" />
-          Forex Trader & Educator
-        </p>
-        <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-          Master the Markets.
-          <br />
-          <span className="text-accent">Trade With Confidence.</span>
-        </h1>
-        <p className="text-gray-300 mt-4">
-          I share my trading knowledge, market insights and strategies to help
-          traders develop better skills and discipline.
-        </p>
-        <p className="text-sm text-gray-400 mt-4">
-          Forex Trader &nbsp;|&nbsp; Market Analyst &nbsp;|&nbsp; Trading Educator
-        </p>
-        <div className="flex gap-4 mt-6">
-          <a href="#courses" className="bg-accent text-black px-6 py-3 rounded-full font-semibold">
-            View Courses →
-          </a>
-          <a href="#contact" className="border border-accent px-6 py-3 rounded-full font-semibold">
-            Contact Me
-          </a>
+      <div className="relative z-10 mx-auto max-w-7xl">
+        <div className="max-w-xl">
+          <p className="mb-3 flex items-center gap-2 text-sm uppercase tracking-wide text-accent">
+            <span className="h-2 w-2 rounded-full bg-accent" />
+            Forex Trader & Educator
+          </p>
+
+          <h1 className="text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
+            Master the Markets.
+            <br />
+            <span className="text-accent">Trade With Confidence.</span>
+          </h1>
+
+          <p className="mt-4 max-w-lg text-gray-300">
+            I share my trading knowledge, market insights and strategies to help
+            traders develop better skills and discipline.
+          </p>
+
+          <p className="mt-4 text-sm text-gray-400">
+            Forex Trader &nbsp;|&nbsp; Market Analyst &nbsp;|&nbsp; Trading Educator
+          </p>
+
+          <div className="mt-6 flex flex-col gap-4 sm:flex-row">
+            <a href="#courses" className="rounded-full bg-accent px-6 py-3 text-center font-semibold text-black">
+              View Courses →
+            </a>
+            <a href="#contact" className="rounded-full border border-accent px-6 py-3 text-center font-semibold text-white">
+              Contact Me
+            </a>
+          </div>
         </div>
       </div>
     </section>
